@@ -43,7 +43,14 @@ jobs:
             powershell -Command "
               Import-Module WebAdministration
 
-              # Creer le site si inexistant
+              # Arreter le site par defaut s'il tourne sur le port 80
+              $defaultSite = Get-Website -Name 'Default Web Site' -ErrorAction SilentlyContinue
+              if ($defaultSite -and $defaultSite.State -eq 'Started') {
+                Stop-Website -Name 'Default Web Site'
+                Write-Host 'Default Web Site arrete'
+              }
+
+              # Creer ou mettre a jour le site squad-portfolio
               if (-not (Get-Website -Name 'squad-portfolio' -ErrorAction SilentlyContinue)) {
                 New-Website -Name 'squad-portfolio' -Port 80 -PhysicalPath 'C:\inetpub\wwwroot\portfolio' -Force
                 Write-Host 'Site cree'
