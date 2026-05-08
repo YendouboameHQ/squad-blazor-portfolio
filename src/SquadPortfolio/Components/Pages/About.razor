@@ -1,0 +1,65 @@
+@page "/about"
+@inject PortfolioDataService DataService
+<PageTitle>À propos — Aimé WOAGOU</PageTitle>
+
+<MudContainer MaxWidth="MaxWidth.Large" Class="mt-8 mb-8">
+    <MudText Typo="Typo.h3" Class="font-weight-bold mb-2">À propos</MudText>
+    <MudText Typo="Typo.body1" Color="Color.Secondary" Class="mb-8">
+        Développeur .NET passionné par l'intégration de l'IA dans les workflows de développement.
+    </MudText>
+
+    <MudGrid Spacing="4">
+        <!-- Bio -->
+        <MudItem xs="12" md="6">
+            <MudText Typo="Typo.h5" Class="font-weight-bold mb-3">Qui je suis</MudText>
+            <MudText Typo="Typo.body1" Class="mb-3" Style="line-height: 1.8;">
+                Développeur .NET avec une forte appétence pour l'automatisation et l'intelligence artificielle.
+                J'explore comment les agents IA peuvent amplifier la productivité des équipes de développement
+                sans remplacer le jugement humain.
+            </MudText>
+            <MudText Typo="Typo.body1" Style="line-height: 1.8;">
+                Ce portfolio est lui-même une démonstration : il a été entièrement développé avec
+                <strong>Squad</strong>, un framework d'agents IA qui orchestre une équipe virtuelle
+                (Lead, Frontend, Backend, Tester, Scribe) sous ma direction.
+            </MudText>
+        </MudItem>
+
+        <!-- Compétences -->
+        <MudItem xs="12" md="6">
+            <MudText Typo="Typo.h5" Class="font-weight-bold mb-3">Compétences</MudText>
+            @foreach (var category in SkillsByCategory)
+            {
+                <MudText Typo="Typo.subtitle2" Color="Color.Primary" Class="mb-1 mt-3">
+                    @category.Key
+                </MudText>
+                <MudStack Row="true" Spacing="1" Wrap="Wrap.Wrap" Class="mb-2">
+                    @foreach (var skill in category.Value)
+                    {
+                        <MudChip T="string" Size="Size.Small"
+                                 Color="@GetSkillColor(skill.Level)"
+                                 Variant="Variant.Filled">
+                            @skill.Name
+                        </MudChip>
+                    }
+                </MudStack>
+            }
+        </MudItem>
+    </MudGrid>
+</MudContainer>
+
+@code {
+    private IReadOnlyList<SkillModel> _skills = [];
+
+    protected override void OnInitialized() => _skills = DataService.GetSkills();
+
+    private IEnumerable<IGrouping<string, SkillModel>> SkillsByCategory =>
+        _skills.GroupBy(s => s.Category);
+
+    private static Color GetSkillColor(int level) => level switch
+    {
+        5 => Color.Success,
+        4 => Color.Primary,
+        3 => Color.Info,
+        _ => Color.Default
+    };
+}

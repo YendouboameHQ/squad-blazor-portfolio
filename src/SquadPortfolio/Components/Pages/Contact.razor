@@ -1,0 +1,70 @@
+@page "/contact"
+<PageTitle>Contact — Aimé WOAGOU</PageTitle>
+
+<MudContainer MaxWidth="MaxWidth.Small" Class="mt-8 mb-8">
+    <MudText Typo="Typo.h3" Class="font-weight-bold mb-2">Contact</MudText>
+    <MudText Typo="Typo.body1" Color="Color.Secondary" Class="mb-6">
+        Une idée de collaboration ? Un projet .NET ou IA ? Contactez-moi.
+    </MudText>
+
+    @if (!_sent)
+    {
+        <MudCard Elevation="2">
+            <MudCardContent Class="pa-6">
+                <MudTextField @bind-Value="_name" Label="Votre nom" Variant="Variant.Outlined"
+                              Class="mb-4" Required="true" />
+                <MudTextField @bind-Value="_email" Label="Votre email" Variant="Variant.Outlined"
+                              InputType="InputType.Email" Class="mb-4" Required="true" />
+                <MudTextField @bind-Value="_message" Label="Votre message" Variant="Variant.Outlined"
+                              Lines="5" Class="mb-4" Required="true" />
+            </MudCardContent>
+            <MudCardActions Class="pa-4">
+                <MudButton OnClick="Send" Variant="Variant.Filled" Color="Color.Primary"
+                           FullWidth="true" Size="Size.Large"
+                           EndIcon="@Icons.Material.Filled.Send">
+                    Envoyer
+                </MudButton>
+            </MudCardActions>
+        </MudCard>
+    }
+    else
+    {
+        <MudAlert Severity="Severity.Success" Icon="@Icons.Material.Filled.CheckCircle">
+            Message envoyé ! Je vous répondrai dès que possible.
+        </MudAlert>
+    }
+
+    <MudDivider Class="my-8" />
+
+    <MudStack Spacing="2">
+        <MudText Typo="Typo.subtitle1" Class="font-weight-bold">Retrouvez-moi sur</MudText>
+        <MudButton StartIcon="@Icons.Custom.Brands.GitHub"
+                   Href="https://github.com/votre-username"
+                   Target="_blank" Variant="Variant.Outlined">
+            GitHub
+        </MudButton>
+        <MudButton StartIcon="@Icons.Custom.Brands.LinkedIn"
+                   Href="https://linkedin.com/in/votre-profil"
+                   Target="_blank" Variant="Variant.Outlined" Color="Color.Info">
+            LinkedIn
+        </MudButton>
+    </MudStack>
+</MudContainer>
+
+@code {
+    private string _name = string.Empty;
+    private string _email = string.Empty;
+    private string _message = string.Empty;
+    private bool _sent = false;
+
+    private void Send()
+    {
+        if (!string.IsNullOrWhiteSpace(_name) &&
+            !string.IsNullOrWhiteSpace(_email) &&
+            !string.IsNullOrWhiteSpace(_message))
+        {
+            // TODO: intégrer EmailJS ou un endpoint de contact
+            _sent = true;
+        }
+    }
+}

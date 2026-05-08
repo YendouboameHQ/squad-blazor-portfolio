@@ -1,0 +1,14 @@
+<Router AppAssembly="@typeof(App).Assembly">
+    <Found Context="routeData">
+        <RouteView RouteData="@routeData" DefaultLayout="@typeof(Components.Layout.MainLayout)" />
+        <FocusOnNavigate RouteData="@routeData" Selector="h1" />
+    </Found>
+    <NotFound>
+        <PageTitle>Page introuvable</PageTitle>
+        <LayoutView Layout="@typeof(Components.Layout.MainLayout)">
+            <MudText Typo="Typo.h4" Align="Align.Center" Class="mt-8">
+                Page introuvable (404)
+            </MudText>
+        </LayoutView>
+    </NotFound>
+</Router>

@@ -1,0 +1,24 @@
+## .NET / Blazor
+bin/
+obj/
+publish/
+*.user
+*.suo
+.vs/
+.vscode/settings.json
+
+## Node (Squad CLI)
+node_modules/
+npm-debug.log*
+
+## OS
+.DS_Store
+Thumbs.db
+
+## Output
+output/
+
+## Secrets (ne jamais commiter)
+*.env
+.env.local
+appsettings.Development.json

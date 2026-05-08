@@ -1,0 +1,76 @@
+@page "/"
+<PageTitle>Aimé WOAGOU — Développeur .NET & IA</PageTitle>
+
+<!-- Hero Section -->
+<MudContainer MaxWidth="MaxWidth.Large" Class="mt-8 mb-8">
+    <MudGrid Justify="Justify.Center" AlignItems="AlignItems.Center" Class="min-height-hero">
+        <MudItem xs="12" md="7">
+            <MudText Typo="Typo.overline" Color="Color.Primary" Class="mb-2">
+                Bienvenue sur mon portfolio
+            </MudText>
+            <MudText Typo="Typo.h2" Class="font-weight-bold mb-3">
+                Aimé WOAGOU
+            </MudText>
+            <MudText Typo="Typo.h5" Color="Color.Secondary" Class="mb-4">
+                Développeur .NET · Intégration IA · Automatisation
+            </MudText>
+            <MudText Typo="Typo.body1" Class="mb-6 mud-text-secondary" Style="max-width: 500px; line-height: 1.8;">
+                Je construis des applications .NET robustes et j'intègre des agents IA dans les workflows de développement.
+                Ce portfolio lui-même a été construit avec <strong>Squad</strong> — une équipe de 5 agents IA sous ma direction.
+            </MudText>
+            <MudStack Row="true" Spacing="2" Wrap="Wrap.Wrap">
+                <MudButton Href="/projects"
+                           Variant="Variant.Filled"
+                           Color="Color.Primary"
+                           Size="Size.Large"
+                           EndIcon="@Icons.Material.Filled.ArrowForward">
+                    Voir mes projets
+                </MudButton>
+                <MudButton Href="/contact"
+                           Variant="Variant.Outlined"
+                           Color="Color.Primary"
+                           Size="Size.Large">
+                    Me contacter
+                </MudButton>
+            </MudStack>
+        </MudItem>
+        <MudItem xs="12" md="5" Class="d-flex justify-center">
+            <MudAvatar Style="width: 200px; height: 200px; font-size: 5rem;"
+                       Color="Color.Primary">
+                AW
+            </MudAvatar>
+        </MudItem>
+    </MudGrid>
+</MudContainer>
+
+<!-- Squad Badge Section -->
+<MudContainer MaxWidth="MaxWidth.Large" Class="mb-8">
+    <MudDivider Class="mb-6" />
+    <MudText Typo="Typo.body2" Align="Align.Center" Color="Color.Secondary" Class="mb-4">
+        CE PORTFOLIO A ÉTÉ DÉVELOPPÉ AVEC
+    </MudText>
+    <MudGrid Justify="Justify.Center" Spacing="3">
+        @foreach (var agent in _agents)
+        {
+            <MudItem>
+                <MudChip T="string" Icon="@agent.Icon" Color="Color.Primary" Variant="Variant.Outlined">
+                    @agent.Name
+                </MudChip>
+            </MudItem>
+        }
+    </MudGrid>
+    <MudText Typo="Typo.caption" Align="Align.Center" Color="Color.Secondary" Class="mt-3">
+        5 agents IA Squad · Orchestration GitHub Copilot · Décisions loggées dans Git
+    </MudText>
+</MudContainer>
+
+@code {
+    private readonly (string Name, string Icon)[] _agents =
+    [
+        ("Lead Agent", Icons.Material.Filled.AccountTree),
+        ("Frontend Agent", Icons.Material.Filled.DesignServices),
+        ("Backend Agent", Icons.Material.Filled.Storage),
+        ("Tester Agent", Icons.Material.Filled.BugReport),
+        ("Scribe Agent", Icons.Material.Filled.Description),
+    ];
+}
