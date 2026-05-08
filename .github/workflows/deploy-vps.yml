@@ -1,0 +1,59 @@
+name: Deploy to Windows VPS (IIS)
+
+on:
+  push:
+    branches: [ master ]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Publish Blazor WASM
+        run: dotnet publish src/SquadPortfolio/SquadPortfolio.csproj -c Release -o ./publish
+
+      - name: Transfer files to VPS via SCP
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          password: ${{ secrets.VPS_PASSWORD }}
+          port: 22
+          source: "./publish/wwwroot/*"
+          target: "C:/inetpub/wwwroot/portfolio"
+          strip_components: 2
+          overwrite: true
+
+      - name: Configure IIS via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          password: ${{ secrets.VPS_PASSWORD }}
+          port: 22
+          script: |
+            powershell -Command "
+              Import-Module WebAdministration
+
+              # Creer le site si inexistant
+              if (-not (Get-Website -Name 'squad-portfolio' -ErrorAction SilentlyContinue)) {
+                New-Website -Name 'squad-portfolio' -Port 80 -PhysicalPath 'C:\inetpub\wwwroot\portfolio' -Force
+                Write-Host 'Site cree'
+              } else {
+                Set-ItemProperty 'IIS:\Sites\squad-portfolio' -Name physicalPath -Value 'C:\inetpub\wwwroot\portfolio'
+                Write-Host 'Site mis a jour'
+              }
+
+              # Demarrer le site
+              Start-Website -Name 'squad-portfolio'
+              Write-Host 'Deploiement termine'
+            "
