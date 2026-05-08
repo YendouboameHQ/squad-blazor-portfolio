@@ -31,7 +31,6 @@ jobs:
           source: "./publish/wwwroot/*"
           target: "C:/inetpub/wwwroot/portfolio"
           strip_components: 2
-          overwrite: true
 
       - name: Configure IIS via SSH
         uses: appleboy/ssh-action@v1.0.3
