@@ -45,23 +45,11 @@ jobs:
             powershell -Command "
               Import-Module WebAdministration
 
-              # Arreter le site par defaut s'il tourne sur le port 80
-              $defaultSite = Get-Website -Name 'Default Web Site' -ErrorAction SilentlyContinue
-              if ($defaultSite -and $defaultSite.State -eq 'Started') {
-                Stop-Website -Name 'Default Web Site'
-                Write-Host 'Default Web Site arrete'
-              }
+              # Pointer le Default Web Site vers le portfolio
+              Set-ItemProperty 'IIS:\Sites\Default Web Site' -Name physicalPath -Value 'C:\inetpub\wwwroot\portfolio'
+              Write-Host 'Physical path mis a jour'
 
-              # Creer ou mettre a jour le site squad-portfolio
-              if (-not (Get-Website -Name 'squad-portfolio' -ErrorAction SilentlyContinue)) {
-                New-Website -Name 'squad-portfolio' -Port 80 -PhysicalPath 'C:\inetpub\wwwroot\portfolio' -Force
-                Write-Host 'Site cree'
-              } else {
-                Set-ItemProperty 'IIS:\Sites\squad-portfolio' -Name physicalPath -Value 'C:\inetpub\wwwroot\portfolio'
-                Write-Host 'Site mis a jour'
-              }
-
-              # Demarrer le site
-              Start-Website -Name 'squad-portfolio'
+              # S assurer que le site tourne
+              Start-Website -Name 'Default Web Site'
               Write-Host 'Deploiement termine'
             "
