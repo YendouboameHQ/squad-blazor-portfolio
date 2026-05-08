@@ -304,14 +304,16 @@ main ─────────────────────────
 ### v1.0 — MVP (en cours)
 
 - [x] Initialisation du projet (structure, Git, Squad)
-- [ ] Configuration Squad — chartes des 5 agents
-- [ ] Page Hero (nom, titre, résumé, CTA)
-- [ ] Page About (bio, compétences, timeline)
-- [ ] Page Projects (grille filtrée)
-- [ ] Page Contact (formulaire)
-- [ ] Thème Dark/Light
-- [ ] Responsive design complet
-- [ ] GitHub Actions → déploiement GitHub Pages
+- [x] Configuration Squad — chartes des 5 agents (Danny, Rusty, Linus, Livingston, Scribe)
+- [x] Page Hero (nom, titre, résumé, CTA)
+- [x] Page About (bio, compétences, timeline)
+- [x] Page Projects (grille filtrée)
+- [x] Page Contact (formulaire)
+- [x] Thème Dark/Light
+- [x] Responsive design complet (MudBlazor)
+- [x] GitHub Actions → déploiement GitHub Pages
+- [ ] Vérification build `dotnet build` *(en cours)*
+- [ ] Contenu réel (vrais projets, compétences, liens)
 
 ### v1.1 — Enrichissement
 

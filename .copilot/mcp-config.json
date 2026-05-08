@@ -1,0 +1,22 @@
+{
+  "mcpServers": {
+    "filesystem": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "D:\\Techniques\\Projects\\Githubproject Inov\\squad-blazor-portfolio"
+      ]
+    },
+    "shell": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-shell-utils"
+      ],
+      "env": {
+        "ALLOWED_COMMANDS": "dotnet,git,npm,node"
+      }
+    }
+  }
+}

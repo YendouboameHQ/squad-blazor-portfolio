@@ -31,3 +31,13 @@ Si le Lead est bloqué → demande d'input au développeur principal (Aimé).
 - [ ] [Frontend] Intégrer MudBlazor + thème Dark/Light
 - [ ] [Lead] Configurer GitHub Actions pour déploiement GitHub Pages
 - [ ] [Scribe] Maintenir `decisions.md` à jour
+
+## Work Type → Agent
+
+| Work Type | Primary | Secondary |
+|-----------|---------|----------|
+| Architecture, decisions, coordination | Danny | — |
+| Blazor components, MudBlazor | Rusty | — |
+| .NET 8 APIs, services | Linus | — |
+| Quality assurance, testing | Livingston | — |
+

@@ -1,25 +1,29 @@
-# Squad Team — Portfolio Blazor
+# Team
+
+> Universe: Ocean's Eleven
+
+## Members
+
+| Agent | Role | Responsibilities |
+|-------|------|-----------------|
+| Danny | Lead | Architecture, decisions, coordination |
+| Rusty | Frontend Dev | Blazor components, MudBlazor, CSS, responsive |
+| Linus | Backend Dev | .NET 8 services, models, business logic |
+| Livingston | Tester | bUnit tests, quality assurance, validation |
+| Scribe | Session Logger | decisions.md, session logs, git commits |
+| Ralph | Monitor | Work queue, backlog, keep-alive |
 
 ## Mission
-Construire un portfolio personnel en Blazor WebAssembly de haute qualité, en servant de démonstration concrète de la collaboration entre agents IA et développeur humain.
 
-## Membres de l'équipe
+Build a Blazor WebAssembly .NET 8 personal portfolio demonstrating real-world Squad AI agent collaboration. The portfolio showcases projects, skills, and contact info — while itself serving as proof of Squad's capabilities.
 
-| Agent | Rôle | Responsabilités principales |
-|-------|------|----------------------------|
-| **Lead** | Chef d'équipe | Architecture, planification, coordination, revue de code |
-| **Frontend** | Développeur Frontend | Composants Blazor, CSS/MudBlazor, UX, responsive |
-| **Backend** | Développeur Backend | Services C#, modèles, logique métier, données |
-| **Tester** | QA / Tests | Tests bUnit, validation, couverture de code |
-| **Scribe** | Documentation | README, décisions, changelog, commentaires de code |
+## Developer
 
-## Règles de fonctionnement
+Aimé WOAGOU — sets objectives, reviews and approves all work before merge.
 
-1. **Humain en dernier** — Aucun merge sans approbation du développeur principal
-2. **Une tâche = un agent** — Pas de travail simultané sur le même fichier
-3. **Décision documentée** — Tout choix architectural va dans `decisions.md`
-4. **Tests obligatoires** — Pas de feature sans test associé
-5. **Convention de code respectée** — Voir README.md section "Conventions"
+## Working Rules
 
-## Développeur principal
-Aimé WOAGOU — définit les objectifs, valide les livrables, approuve les merges
+1. Human has final say — nothing merges without developer approval
+2. One task per agent — no simultaneous edits to the same file
+3. Every architectural decision goes in `.squad/decisions.md`
+4. No feature ships without a test
