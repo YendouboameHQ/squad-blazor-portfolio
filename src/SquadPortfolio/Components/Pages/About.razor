@@ -33,7 +33,7 @@
                     @category.Key
                 </MudText>
                 <MudStack Row="true" Spacing="1" Wrap="Wrap.Wrap" Class="mb-2">
-                    @foreach (var skill in category.Value)
+                    @foreach (var skill in category)
                     {
                         <MudChip T="string" Size="Size.Small"
                                  Color="@GetSkillColor(skill.Level)"
