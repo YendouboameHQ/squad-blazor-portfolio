@@ -49,7 +49,9 @@ jobs:
               Set-ItemProperty 'IIS:\Sites\Default Web Site' -Name physicalPath -Value 'C:\inetpub\wwwroot\portfolio'
               Write-Host 'Physical path mis a jour'
 
-              # S assurer que le site tourne
+              # Demarrer l app pool et le site
+              Start-WebAppPool -Name 'DefaultAppPool'
               Start-Website -Name 'Default Web Site'
-              Write-Host 'Deploiement termine'
+
+              Write-Host 'Deploiement termine - Site: ' + (Get-Website -Name 'Default Web Site').State
             "
