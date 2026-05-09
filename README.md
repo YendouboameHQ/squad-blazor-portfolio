@@ -356,9 +356,10 @@ MIT — voir [LICENSE](LICENSE)
 ## Auteur
 
 **Aimé WOAGOU**
-- Portfolio : *(ce projet)*
-- LinkedIn : [linkedin.com/in/votre-profil](https://linkedin.com/in/votre-profil)
-- GitHub : [github.com/votre-username](https://github.com/votre-username)
+- Portfolio : [aime-woagou.duckdns.org](https://aime-woagou.duckdns.org)
+- LinkedIn : [linkedin.com/in/aime-woagou](https://www.linkedin.com/in/aime-woagou/)
+- GitHub : [github.com/YendouboameHQ](https://github.com/YendouboameHQ)
+- Email : [aimewoagou12@gmail.com](mailto:aimewoagou12@gmail.com)
 
 ---
 
