@@ -12,5 +12,6 @@ builder.Services.AddScoped(sp => new HttpClient { BaseAddress = new Uri(builder.
 
 builder.Services.AddMudServices();
 builder.Services.AddScoped<PortfolioDataService>();
+builder.Services.AddScoped<GitHubService>();
 
 await builder.Build().RunAsync();
